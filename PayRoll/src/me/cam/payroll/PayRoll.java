@@ -11,6 +11,8 @@ public class PayRoll {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        // All taking user input
+
         System.out.println("Enter employee's name:");
         String name = scanner.nextLine();
 

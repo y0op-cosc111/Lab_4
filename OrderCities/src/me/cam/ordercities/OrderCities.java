@@ -30,6 +30,19 @@ public class OrderCities {
 
         while (true) {
 
+            /*
+            Because there will only be 3 cities, I can hard-code something like this:
+            It checks the first characters of each city and compares them.
+
+            It checks if the second city in the list is higher alphabetically than
+            the first and moves it up if so.
+
+            Then it checks if the third city is higher than the second and moves it accordingly.
+
+            Using booleans to make sure checks are complete it verifies that the cities are in
+            alphabetical order.
+             */
+
             boolean check1 = false;
             if (Character.toLowerCase(order.get(1).charAt(0)) < Character.toLowerCase(order.get(0).charAt(0))) {
                 String temp = order.remove(1);
@@ -39,7 +52,7 @@ public class OrderCities {
             }
 
             boolean check2 = false;
-            if (Character.toLowerCase(order.get(2).charAt(0)) < Character.toLowerCase(order.get(0).charAt(0))) {
+            if (Character.toLowerCase(order.get(2).charAt(0)) < Character.toLowerCase(order.get(1).charAt(0))) {
                 String temp = order.remove(2);
                 order.add(1, temp);
             } else {
