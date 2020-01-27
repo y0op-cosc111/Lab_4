@@ -1,7 +1,5 @@
 package me.cam.ordercities;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class OrderCities {
@@ -17,51 +15,46 @@ public class OrderCities {
         System.out.println("Enter the Third City:");
         String city3 = scanner.nextLine();
 
-        List<String> order = new ArrayList<>();
-        order.add(city1);
-        order.add(city2);
-        order.add(city3);
-
-        /*
-        The simple solution would be to use
-        Arrays.sort(); but because I'll be
-        marked down for that, here's the long way:
-         */
-
+        // The faster way would be to use Arrays.sort()
         while (true) {
+            boolean sorted = true;
 
             /*
-            Because there will only be 3 cities, I can hard-code something like this:
-            It checks the first characters of each city and compares them.
+            If any of the following conditions are met,
+            sorted is set to false so that the loop can
+            run again and check over all the conditions
+            once more.
 
-            It checks if the second city in the list is higher alphabetically than
-            the first and moves it up if so.
-
-            Then it checks if the third city is higher than the second and moves it accordingly.
-
-            Using booleans to make sure checks are complete it verifies that the cities are in
-            alphabetical order.
+            The loops only breaks when none of the if-
+            statements are run. In other words, it only
+            breaks when the loops is sorted and keeps
+            going if any of the conditions are met.
              */
 
-            boolean check1 = false;
-            if (Character.toLowerCase(order.get(1).charAt(0)) < Character.toLowerCase(order.get(0).charAt(0))) {
-                String temp = order.remove(1);
-                order.add(0, temp);
-            } else {
-                check1 = true;
+            if (city2.compareTo(city1) < 0) {
+                String temp = city1;
+                city1 = city2;
+                city2 = temp;
+                sorted = false;
             }
 
-            boolean check2 = false;
-            if (Character.toLowerCase(order.get(2).charAt(0)) < Character.toLowerCase(order.get(1).charAt(0))) {
-                String temp = order.remove(2);
-                order.add(1, temp);
-            } else {
-                check2 = true;
+            if (city3.compareTo(city1) < 0) {
+                String temp = city1;
+                city1 = city3;
+                city3 = temp;
+                sorted = false;
             }
 
-            if (check1 && check2) break;
+            if (city3.compareTo(city2) < 0) {
+                String temp = city2;
+                city2 = city3;
+                city3 = temp;
+                sorted = false;
+            }
+
+            if (sorted) break;
         }
 
-        System.out.println("The alphabetical order of the cities is: " + order.get(0) + ", " + order.get(1) + ", " + order.get(2));
+        System.out.println("The alphabetical order of the cities is: " + city1 + ", " + city2 + ", " + city3);
     }
 }
