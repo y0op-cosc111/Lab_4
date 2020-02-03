@@ -31,21 +31,24 @@ public class OrderCities {
             going if any of the conditions are met.
              */
 
-            if (city2.compareTo(city1) < 0) {
+            // I could using .toLowerCase on all the cities to make all the comparisons the same but
+            // .compareToIgnoreCase seems like what you want me to use
+
+            if (city2.compareToIgnoreCase(city1) < 0) {
                 String temp = city1;
                 city1 = city2;
                 city2 = temp;
                 sorted = false;
             }
 
-            if (city3.compareTo(city1) < 0) {
+            if (city3.compareToIgnoreCase(city1) < 0) {
                 String temp = city1;
                 city1 = city3;
                 city3 = temp;
                 sorted = false;
             }
 
-            if (city3.compareTo(city2) < 0) {
+            if (city3.compareToIgnoreCase(city2) < 0) {
                 String temp = city2;
                 city2 = city3;
                 city3 = temp;
